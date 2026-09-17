@@ -2,6 +2,8 @@
 
 A small Flask app that turns a messy CSV into a clean Excel workbook. It detects comma, semicolon, and tab delimiters; trims cells; removes fully empty and duplicate rows; and preserves the original column names and order.
 
+![TidySheet cleaned CSV preview](screenshots/tidysheet-result.png)
+
 Uploaded CSVs are saved under `uploads/` with a unique name and are never overwritten. Generated workbooks are saved separately in `exports/`.
 
 ## Setup
