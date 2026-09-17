@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Your cleaned data — TidySheet{% endblock %}
+{% block content %}
+<section class="result-header">
+  <p class="eyebrow">Ready to download</p>
+  <h1>Your data is tidy.</h1>
+  <p class="intro">Detected a {{ delimiter_name }} delimiter and prepared your Excel workbook.</p>
+  <a class="button" href="{{ download_url }}">Download .xlsx <span>↓</span></a>
+  <a class="text-link" href="{{ url_for('index') }}">Clean another file</a>
+</section>
+<section class="stats" aria-label="Cleanup summary">
+  <div><strong>{{ total_rows }}</strong><span>clean rows</span></div>
+  <div><strong>{{ removed_empty }}</strong><span>empty rows removed</span></div>
+  <div><strong>{{ removed_duplicates }}</strong><span>duplicates removed</span></div>
+</section>
+<section class="table-section">
+  <div class="table-heading"><h2>Preview</h2><p>Showing up to the first 100 cleaned rows.</p></div>
+  <div class="table-wrap"><table><thead><tr>{% for header in headers %}<th>{{ header }}</th>{% endfor %}</tr></thead><tbody>
+    {% for row in rows %}<tr>{% for cell in row %}<td>{{ cell }}</td>{% endfor %}</tr>{% else %}<tr><td colspan="{{ headers|length }}">No data rows remain after cleaning.</td></tr>{% endfor %}
+  </tbody></table></div>
+</section>
+{% endblock %}

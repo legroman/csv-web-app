@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}TidySheet — CSV cleaner{% endblock %}
+{% block content %}
+<section class="hero">
+  <p class="eyebrow">CSV → polished spreadsheet</p>
+  <h1>Clean messy data in one quick pass.</h1>
+  <p class="intro">Upload a CSV and get a tidy Excel file. Whitespace, blank rows, and duplicate records are handled automatically.</p>
+  <form class="upload-card" action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
+    <label for="file">Choose a CSV file</label>
+    <input id="file" name="file" type="file" accept=".csv,text/csv" required>
+    <p>Comma, semicolon, and tab delimiters supported · Max 10 MB</p>
+    <button type="submit">Clean my file <span>→</span></button>
+  </form>
+</section>
+<section class="features">
+  <div><b>01</b><h2>Smart import</h2><p>Delimiter detection makes spreadsheets from different systems easy to open.</p></div>
+  <div><b>02</b><h2>Gentle cleanup</h2><p>Your columns stay exactly ordered and named as they were.</p></div>
+  <div><b>03</b><h2>Excel ready</h2><p>Download a clean .xlsx workbook, with your original left untouched.</p></div>
+</section>
+{% endblock %}
